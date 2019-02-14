@@ -1,5 +1,5 @@
-FROM node:8.15.0-alpine
-LABEL maintainer="ISO Engineering <isoengineering@turner.com>"
+FROM node:10.15.1-alpine
+LABEL maintainer="ISO Engineering <isodev@turner.com>"
 
 # Perform some setup
 RUN apk --no-cache add ca-certificates shadow
@@ -9,7 +9,7 @@ RUN sed -i 's/^CREATE_MAIL_SPOOL=yes/CREATE_MAIL_SPOOL=no/' /etc/default/useradd
 
 RUN find / -perm +6000 -type f -exec chmod a-s {} \; || true
 
-# Add nonroot user 
+# Add nonroot user
 RUN /usr/sbin/groupadd webuser && \
       useradd -K MAIL_DIR=/dev/null -g webuser -m -s /sbin/nologin -c "Docker image user" webuser
 
@@ -19,6 +19,6 @@ RUN rm -rf /var/cache/apk/*
 # Set user
 USER webuser
 
-# Start up 
+# Start up
 CMD [ "node" ]
 
