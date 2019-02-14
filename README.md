@@ -1,5 +1,5 @@
-FROM node:8.15.0-alpine
-LABEL maintainer="ISO Engineering <isoengineering@turner.com>"
+FROM node:10.15.1-alpine
+LABEL maintainer="ISO Engineering <isodev@turner.com>"
 
 # Perform some setup
 RUN apk --no-cache add ca-certificates shadow
